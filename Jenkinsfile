@@ -1,6 +1,10 @@
 pipeline {
 
     agent any
+    
+    stage('scm checkout'){
+        git 'https://github.com/narendra311777/mycode.git'
+    }
 
     stages {
 
@@ -16,7 +20,7 @@ pipeline {
             steps {
 
                 withCredentials([[$class          : 'UsernamePasswordMultiBinding',
-                                  credentialsId   : 'PCF_LOGIN',
+                                  credentialsId   : 'pcf_login',
                                   usernameVariable: 'USERNAME',
                                   passwordVariable: 'PASSWORD']]) {
 
